@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/strict-type-checked",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "project": true
+  }
+}
