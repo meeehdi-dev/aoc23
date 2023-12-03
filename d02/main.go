@@ -5,6 +5,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type game struct {
@@ -14,6 +15,8 @@ type game struct {
 }
 
 func main() {
+	start := time.Now()
+
 	file, _ := os.ReadFile("d02/input.txt")
 	input := string(file)
 	lines := strings.Split(input, "\n")
@@ -79,4 +82,7 @@ func main() {
 	}
 
 	fmt.Println(part1, part2)
+
+	elapsed := time.Since(start)
+	fmt.Printf("[%.2fms]\n", float64(elapsed)/1000000)
 }

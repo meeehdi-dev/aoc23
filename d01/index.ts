@@ -1,5 +1,7 @@
 import { readFileSync } from "fs-extra";
 
+console.time("");
+
 const digitsMap: Record<string, number> = {
   1: 1,
   2: 2,
@@ -95,3 +97,5 @@ lines.forEach((line) => {
 });
 
 console.log(part1, part2);
+
+console.timeEnd("");

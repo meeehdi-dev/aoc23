@@ -1,5 +1,7 @@
 import { readFileSync } from "fs-extra";
 
+console.time("");
+
 const input = readFileSync("d02/input.txt", "utf-8").toString();
 const lines = input.split("\n");
 let part1 = 0;
@@ -56,3 +58,5 @@ const minCubeGames = Object.entries(games).reduce<
 part2 += Object.values(minCubeGames).reduce((acc, game) => acc + game.pow, 0);
 
 console.log(part1, part2);
+
+console.timeEnd("");

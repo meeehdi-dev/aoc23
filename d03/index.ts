@@ -1,5 +1,7 @@
 import { readFileSync } from "fs-extra";
 
+console.time("");
+
 const input = readFileSync("d03/example.txt", "utf-8").toString();
 const lines = input.split("\n");
 let part1 = 0;
@@ -68,3 +70,5 @@ part2 += Object.entries(symbolMap)
   }, 0);
 
 console.log(part1, part2);
+
+console.timeEnd("");

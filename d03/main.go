@@ -6,6 +6,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type number struct {
@@ -17,6 +18,8 @@ type symbol struct {
 }
 
 func main() {
+	start := time.Now()
+
 	file, _ := os.ReadFile("d03/example.txt")
 	input := string(file)
 	lines := strings.Split(input, "\n")
@@ -106,4 +109,7 @@ func main() {
 	}
 
 	fmt.Println(part1, part2)
+
+	elapsed := time.Since(start)
+	fmt.Printf("[%.2fms]\n", float64(elapsed)/1000000)
 }
