@@ -2,7 +2,7 @@ import { readFileSync } from "fs-extra";
 
 console.time("");
 
-const input = readFileSync("d03/example.txt", "utf-8").toString();
+const input = readFileSync("d03/input.txt", "utf-8").toString();
 const lines = input.split("\n");
 let part1 = 0;
 let part2 = 0;
