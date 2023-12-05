@@ -20,7 +20,7 @@ type symbol struct {
 func main() {
 	start := time.Now()
 
-	file, _ := os.ReadFile("d03/example.txt")
+	file, _ := os.ReadFile("d03/input.txt")
 	input := string(file)
 	lines := strings.Split(input, "\n")
 
