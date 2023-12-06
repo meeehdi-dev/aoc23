@@ -35,55 +35,22 @@ lines.forEach((line) => {
   }
 });
 
+const getValue = (time: number, distance: number) => {
+  const maxSpeed = Math.floor(time / 2);
+  const speed = (time - Math.sqrt(Math.pow(time, 2) - 4 * distance)) / 2;
+  const normalSpeed = Math.floor(speed);
+  return (maxSpeed - normalSpeed) * 2 - ((time - 1) % 2);
+};
+
 for (let i = 0; i < times.length; i++) {
   const [time, distance] = [times[i], distances[i]];
-  let maxSpeed0 = Math.floor(time / 2);
-  let maxSpeed1 = time - Math.floor(time / 2 - 0.5);
-  let maxDistance0 = Math.floor(maxSpeed0 * (time - maxSpeed0));
-  let maxDistance1 = Math.floor(maxSpeed1 * (time - maxSpeed1));
-  const speed = (time - Math.sqrt(Math.pow(time, 2) - 4 * distance)) / 2;
-  const normalSpeed0 = Math.floor(speed);
-  const normalSpeed1 = time - normalSpeed0;
-  let j = 0;
-  if (maxDistance0 > distance) {
-    const diff = maxSpeed0 - normalSpeed0;
-    j += diff;
-    maxSpeed0 -= diff;
-    maxDistance0 = Math.floor(maxSpeed0 * (time - maxSpeed0));
-  }
-  if (maxDistance1 > distance) {
-    const diff = normalSpeed1 - maxSpeed1;
-    j += diff;
-    maxSpeed1 += diff;
-    maxDistance1 = Math.floor(maxSpeed1 * (time - maxSpeed1));
-  }
-  if (j > 0) {
-    part1 *= j;
+  const value = getValue(time, distance);
+  if (value > 0) {
+    part1 *= value;
   }
 }
 
-let maxSpeed0 = Math.floor(totalTime / 2);
-let maxSpeed1 = totalTime - Math.floor(totalTime / 2 - 0.5);
-let maxDistance0 = Math.floor(maxSpeed0 * (totalTime - maxSpeed0));
-let maxDistance1 = Math.floor(maxSpeed1 * (totalTime - maxSpeed1));
-const speed =
-  (totalTime - Math.sqrt(Math.pow(totalTime, 2) - 4 * totalDistance)) / 2;
-const normalSpeed0 = Math.floor(speed);
-const normalSpeed1 = totalTime - normalSpeed0;
-let j = 0;
-if (maxDistance0 > totalDistance) {
-  const diff = maxSpeed0 - normalSpeed0;
-  j += diff;
-  maxSpeed0 -= diff;
-  maxDistance0 = Math.floor(maxSpeed0 * (totalTime - maxSpeed0));
-}
-if (maxDistance1 > totalDistance) {
-  const diff = normalSpeed1 - maxSpeed1;
-  j += diff;
-  maxSpeed1 += diff;
-  maxDistance1 = Math.floor(maxSpeed1 * (totalTime - maxSpeed1));
-}
-part2 += j;
+part2 += getValue(totalTime, totalDistance);
 
 console.log(part1, part2);
 
